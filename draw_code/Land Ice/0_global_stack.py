@@ -189,7 +189,7 @@ if __name__=='__main__':
     # 95% line
     time = np.array(time_ais).tolist()
     th_time = np.array(year[51:] + time)
-    ax1.plot(th_time, np.full_like(th_time, th95_Ho), label='Holocene Baseline', color='#ff0001')
+    ax1.plot(th_time, np.full_like(th_time, th95_Ho), label='Baseline bound', color='#ff0001',linestyle='--')
 
 
     x_pos = -3.4
@@ -216,7 +216,7 @@ if __name__=='__main__':
     bias = 0
     ax1.xaxis.set_major_locator(
         ticker.FixedLocator(
-            [bias + 10, bias + 8, bias + 6, bias + 4, bias + 2, bias, bias - 1.5, bias - 2.5, bias - 3.5]))
+            [bias + 10, bias + 8, bias + 6, bias + 4, bias + 2,bias+0.1,bias, bias - 1.5, bias - 2.5, bias - 3.5]))
 
     # Convert the scale values to year labels
     ax1.set_xticklabels([
@@ -225,6 +225,7 @@ if __name__=='__main__':
         str(int(bias + 6)),
         str(int(bias + 4)),
         str(int(bias + 2)),
+        '',                # 1850
         str(int(current_year - bias)),
 
         str(int(current_year - (bias - 1.5) * 20)),
@@ -233,6 +234,7 @@ if __name__=='__main__':
 
         str(int(current_year - (bias - 3.5) * 20))
     ])
+
 
     ax1.spines['right'].set_color('none')
     ax1.spines['top'].set_color('none')
